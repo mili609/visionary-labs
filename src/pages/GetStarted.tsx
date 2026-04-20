@@ -15,10 +15,10 @@ const GetStarted = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
+    <div className="min-h-screen bg-slate-50 overflow-hidden">
       <Navbar />
       
-      <main className="pt-28 md:pt-40 pb-24 md:pb-32">
+      <main className="pt-28 md:pt-40 pb-24 md:pb-32 light-section">
         {/* Animated Background Elements */}
         <div className="fixed inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-20 left-1/3 w-80 h-80 bg-gradient-to-br from-primary/8 to-transparent rounded-full blur-3xl animate-float" />
@@ -27,17 +27,17 @@ const GetStarted = () => {
 
         {/* Hero Section - Compact */}
         <section className={cn(
-          "relative mb-12 md:mb-16 transition-all duration-1000",
+          "relative mb-12 md:mb-20 transition-all duration-1000",
           isVisible ? "opacity-100" : "opacity-0"
         )}>
           <div className="container-premium max-w-4xl">
-            <div className="text-center space-y-3 md:space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-                Have access to<br className="hidden sm:inline" /> MyoPREVA
+            <div className="text-center space-y-4 md:space-y-6 pt-8 md:pt-12">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-tight font-display">
+                Have access to<br className="hidden sm:inline" /> MyoPREVA™
               </h1>
               
-              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-                Be part of the expert panel to fit MyoPREVA™
+              <p className="text-base md:text-lg text-slate-700 max-w-2xl mx-auto font-medium">
+                Complete your profile to begin ordering MyoPREVA™ or register as a provider
               </p>
             </div>
           </div>
@@ -45,17 +45,17 @@ const GetStarted = () => {
 
         {/* Form Section - Compact Layout */}
         <section className="relative">
-          <div className="w-full max-w-6xl mx-auto px-4 md:px-8 lg:px-12">
+          <div className="w-full max-w-[1080px] mx-auto px-4 md:px-8">
             {/* Premium Tab Switcher - Compact */}
             <div className={cn(
-              "flex justify-center mb-9 transition-all duration-1000",
+              "flex justify-center mb-12 transition-all duration-1000",
               isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
-              <div className="glass relative flex rounded-full p-0.5">
+              <div className="glass-light relative inline-flex rounded-full p-1 gap-0">
                 <span
                   className={cn(
-                    "absolute inset-y-0.5 w-1/2 rounded-full bg-gradient-primary shadow-glow transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                    tab === "patient" ? "left-0.5" : "left-1/2 translate-x-0"
+                    "absolute top-1 bottom-1 w-[calc(50%-0.25rem)] rounded-full bg-gradient-primary shadow-glow transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                    tab === "patient" ? "left-1" : "right-1"
                   )}
                 />
                 {([
@@ -66,11 +66,11 @@ const GetStarted = () => {
                     key={t.id}
                     onClick={() => setTab(t.id)}
                     className={cn(
-                      "relative z-10 flex-1 flex items-center justify-center gap-1.5 rounded-full py-2 px-4 md:px-5 text-xs md:text-sm font-semibold transition-colors duration-300 group h-10",
-                      tab === t.id ? "text-primary-foreground" : "text-muted-foreground hover:text-white"
+                      "relative z-10 flex-1 min-w-0 flex items-center justify-center gap-1.5 rounded-full py-2 px-3 md:px-4 text-xs md:text-sm font-semibold transition-colors duration-300 group h-10 whitespace-nowrap",
+                      tab === t.id ? "text-primary-foreground" : "text-slate-700 hover:text-slate-900"
                     )}
                   >
-                    <t.icon className="h-4 w-4 transition-transform group-hover:scale-110" />
+                    <t.icon className="h-4 w-4 flex-shrink-0 transition-transform group-hover:scale-110" />
                     <span className="hidden sm:inline truncate">{t.label}</span>
                     <span className="sm:hidden text-xs truncate">{t.label.split(" ")[0]}</span>
                   </button>
@@ -80,16 +80,16 @@ const GetStarted = () => {
 
             {/* Form Card - Premium Centered Width */}
             <div className={cn(
-              "glass-card rounded-3xl p-8 md:p-12 shadow-elevated transition-all duration-1000 max-w-4xl mx-auto",
+              "glass-card-light rounded-3xl p-8 md:p-12 shadow-light transition-all duration-1000 mx-auto",
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}>
               <div key={tab} className="animate-fade-in">
                 {/* Form Header */}
-                <div className="mb-7 space-y-1.5">
-                  <h2 className="text-2xl md:text-3xl font-bold text-white">
+                <div className="mb-10 space-y-1.5">
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
                     {tab === "patient" ? "Order MyoPREVA™" : "Become a Provider"}
                   </h2>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-slate-700">
                     {tab === "patient"
                       ? "Complete your assessment to get started"
                       : "Join our network of certified professionals"}
@@ -169,10 +169,10 @@ function PatientForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-6">
       {/* Upload Fundus Photos */}
-      <div className="space-y-2.5">
-        <label className="text-xs font-semibold text-white uppercase tracking-wider opacity-70 block">
+      <div className="space-y-4">
+        <label className="text-xs font-semibold text-slate-900 uppercase tracking-wider opacity-80 block">
           Upload Fundus Photos
         </label>
         <div className="relative group">
@@ -182,14 +182,14 @@ function PatientForm() {
             onChange={handleFileUpload}
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
           />
-          <div className="relative border-2 border-dashed border-primary/35 rounded-xl p-6 md:p-8 transition-all duration-300 hover:border-primary/55 hover:bg-primary/[0.03] group-hover:shadow-lg hover:shadow-[0_0_30px_hsl(197_100%_50%/0.15)]">
+          <div className="relative border-2 border-dashed border-primary/25 rounded-xl p-6 md:p-8 transition-all duration-300 hover:border-primary/45 hover:bg-primary/[0.03] group-hover:shadow-lg hover:shadow-[0_0_30px_hsl(197_100%_50%/0.1)]">
             <div className="flex flex-col items-center gap-2.5 text-center">
-              <div className="p-2.5 rounded-full bg-gradient-primary/10 group-hover:scale-110 transition-transform">
+              <div className="p-2.5 rounded-full bg-primary/10 group-hover:scale-110 transition-transform">
                 <Upload className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <p className="text-white font-medium text-sm">Drag and drop or click to browse</p>
-                <p className="text-xs text-muted-foreground">DICOM, PNG, JPEG • Max 5MB</p>
+                <p className="text-slate-900 font-medium text-sm">Drag and drop or click to browse</p>
+                <p className="text-xs text-slate-600">DICOM, PNG, JPEG • Max 5MB</p>
               </div>
             </div>
             {uploadedFile && (
@@ -203,8 +203,8 @@ function PatientForm() {
       </div>
 
       {/* Patient Information Section */}
-      <div className="space-y-2.5">
-        <h3 className="text-xs font-semibold text-white uppercase tracking-wider opacity-60">
+      <div className="space-y-4">
+        <h3 className="text-xs font-semibold text-slate-900 uppercase tracking-wider opacity-80">
           Patient Information
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -232,8 +232,8 @@ function PatientForm() {
       </div>
 
       {/* Clinical Measurements Section */}
-      <div className="space-y-2.5">
-        <h3 className="text-xs font-semibold text-white uppercase tracking-wider opacity-60">
+      <div className="space-y-4">
+        <h3 className="text-xs font-semibold text-slate-900 uppercase tracking-wider opacity-80">
           Clinical Measurements
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -268,8 +268,8 @@ function PatientForm() {
         </div>
 
         {/* Cycloplegia Applied */}
-        <div className="space-y-2 pt-0.5">
-          <label className="text-xs font-semibold text-white uppercase tracking-wider opacity-60 block">
+        <div className="space-y-3 pt-2">
+          <label className="text-xs font-semibold text-slate-900 uppercase tracking-wider opacity-80 block">
             Cycloplegia Applied?
           </label>
           <div className="grid grid-cols-2 gap-2.5">
@@ -286,8 +286,8 @@ function PatientForm() {
                 <div className={cn(
                   "px-3 py-2 rounded-lg border text-center font-medium text-sm transition-all duration-300 h-10 flex items-center justify-center",
                   formData.cycloplegia === option
-                    ? "border-primary bg-primary/10 text-primary"
-                    : "border-white/10 bg-white/[0.02] text-muted-foreground hover:border-primary/40 hover:text-white"
+                    ? "border-primary bg-primary/15 text-primary"
+                    : "border-slate-300 bg-slate-100 text-slate-700 hover:border-primary/50 hover:text-slate-900"
                 )}>
                   {option}
                 </div>
@@ -298,11 +298,11 @@ function PatientForm() {
       </div>
 
       {/* Treatment Plan Section */}
-      <div className="space-y-2.5">
-        <h3 className="text-xs font-semibold text-white uppercase tracking-wider opacity-60">
+      <div className="space-y-4 mt-8">
+        <h3 className="text-xs font-semibold text-slate-900 uppercase tracking-wider opacity-80">
           Treatment Plan
         </h3>
-        <div className="space-y-3">
+        <div className="space-y-6">
           <FormSelect
             label="Select Product Option"
             name="productOption"
@@ -326,7 +326,7 @@ function PatientForm() {
       </div>
 
       {/* Submit Button */}
-      <div className="pt-2">
+      <div className="pt-8">
         <PremiumButton type="submit" className="w-full">
           <span>Continue to Order</span>
           <ArrowRight className="h-4 w-4" />
@@ -371,10 +371,10 @@ function PractitionerForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-6">
       {/* Personal Details Section */}
-      <div className="space-y-2.5">
-        <h3 className="text-xs font-semibold text-white uppercase tracking-wider opacity-60">
+      <div className="space-y-4">
+        <h3 className="text-xs font-semibold text-slate-900 uppercase tracking-wider opacity-80">
           Personal Details
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -405,11 +405,11 @@ function PractitionerForm() {
       </div>
 
       {/* Practice Information Section */}
-      <div className="space-y-2.5">
-        <h3 className="text-xs font-semibold text-white uppercase tracking-wider opacity-60">
+      <div className="space-y-4">
+        <h3 className="text-xs font-semibold text-slate-900 uppercase tracking-wider opacity-80">
           Practice Information
         </h3>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <FormField
             label="Practice Name"
             name="practiceName"
@@ -436,19 +436,30 @@ function PractitionerForm() {
             ]}
             required
           />
-          <FormField
-            label="Your Country"
-            name="country"
-            placeholder="e.g. Singapore"
-            value={formData.country}
-            onChange={handleInputChange}
-            required
-          />
+          {/* Your Country Field - Exact FormSelect Match */}
+          <div className="space-y-2">
+            <label htmlFor="country" className="text-xs font-semibold text-slate-900 uppercase tracking-wider opacity-80 block">
+              Your Country
+              <span className="text-destructive ml-0.5">*</span>
+            </label>
+            <div className="relative group">
+              <input
+                id="country"
+                name="country"
+                type="text"
+                placeholder="e.g. Singapore"
+                value={formData.country}
+                onChange={handleInputChange}
+                required
+                className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all duration-300 focus:border-primary focus:bg-blue-50 focus:shadow-[0_0_0_3px_hsl(197_100%_50%/0.12)] hover:border-slate-400 h-12"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Submit Button */}
-      <div className="pt-2">
+      <div className="pt-6">
         <PremiumButton type="submit" className="w-full">
           <span>Register & Submit</span>
           <ArrowRight className="h-4 w-4" />
@@ -482,7 +493,7 @@ function FormField({
   className = "",
 }: FormFieldProps) {
   const inputClasses =
-    "peer w-full rounded-lg border border-white/10 bg-white/[0.02] px-3.5 pt-5 pb-1.5 text-sm text-white placeholder-transparent outline-none transition-all duration-300 focus:border-primary/50 focus:bg-white/[0.04] focus:shadow-[0_0_0_3px_hsl(197_100%_50%/0.1)] hover:border-white/15 h-10";
+    "peer w-full rounded-lg border border-slate-300 bg-white px-3.5 pt-5 pb-1.5 text-sm text-slate-900 placeholder-transparent outline-none transition-all duration-300 focus:border-primary/60 focus:bg-blue-50 focus:shadow-[0_0_0_3px_hsl(197_100%_50%/0.12)] hover:border-slate-400 h-10";
 
   return (
     <div className={cn("relative group", className)}>
@@ -510,7 +521,7 @@ function FormField({
       )}
       <label
         htmlFor={name}
-        className="pointer-events-none absolute left-3.5 top-1 text-[9px] font-semibold uppercase tracking-widest text-muted-foreground transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-xs peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-normal peer-focus:top-1 peer-focus:text-[9px] peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-semibold peer-focus:text-primary"
+        className="pointer-events-none absolute left-3.5 top-1 text-[9px] font-semibold uppercase tracking-widest text-slate-600 transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-xs peer-placeholder-shown:normal-case peer-placeholder-shown:tracking-normal peer-placeholder-shown:font-normal peer-placeholder-shown:text-slate-500 peer-focus:top-1 peer-focus:text-[9px] peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-semibold peer-focus:text-primary"
       >
         {label}
         {required && <span className="text-destructive ml-0.5">*</span>}
@@ -537,35 +548,31 @@ function FormSelect({
   required = false,
 }: FormSelectProps) {
   return (
-    <div className="relative group">
-      <select
-        id={name}
-        name={name}
-        value={value}
-        onChange={onChange}
-        required={required}
-        className="peer w-full rounded-lg border border-white/10 bg-white/[0.02] px-3.5 pr-10 text-sm text-white outline-none transition-all duration-300 focus:border-primary/50 focus:bg-white/[0.04] focus:shadow-[0_0_0_3px_hsl(197_100%_50%/0.1)] hover:border-white/15 appearance-none cursor-pointer h-10"
-        style={{
-          lineHeight: "2.5rem",
-          paddingTop: "1.25rem",
-          paddingBottom: "0.375rem",
-          verticalAlign: "middle",
-        }}
-      >
-        {options.map(opt => (
-          <option key={opt.value} value={opt.value} className="bg-background text-white">
-            {opt.label}
-          </option>
-        ))}
-      </select>
-      <label className="pointer-events-none absolute left-3.5 top-0.5 text-[9px] font-semibold uppercase tracking-widest text-muted-foreground transition-all duration-300 z-10 bg-background px-0.5 py-0">
+    <div className="space-y-2">
+      <label htmlFor={name} className="text-xs font-semibold text-slate-900 uppercase tracking-wider opacity-80 block">
         {label}
         {required && <span className="text-destructive ml-0.5">*</span>}
       </label>
-      <div className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-primary/70 transition-all peer-focus:text-primary">
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
+      <div className="relative group">
+        <select
+          id={name}
+          name={name}
+          value={value}
+          onChange={onChange}
+          required={required}
+          className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition-all duration-300 focus:border-primary focus:bg-blue-50 focus:shadow-[0_0_0_3px_hsl(197_100%_50%/0.12)] hover:border-slate-400 appearance-none cursor-pointer h-12"
+        >
+          {options.map(opt => (
+            <option key={opt.value} value={opt.value} className="bg-white text-slate-900">
+              {opt.label}
+            </option>
+          ))}
+        </select>
+        <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-slate-600 transition-colors">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 10l5 5 5-5z" />
+          </svg>
+        </div>
       </div>
     </div>
   );
