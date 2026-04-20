@@ -51,11 +51,11 @@ const GetStarted = () => {
               "flex justify-center mb-9 transition-all duration-1000",
               isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
             )}>
-              <div className="glass relative inline-flex rounded-full p-0.5">
+              <div className="glass relative flex rounded-full p-0.5">
                 <span
                   className={cn(
                     "absolute inset-y-0.5 w-1/2 rounded-full bg-gradient-primary shadow-glow transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                    tab === "patient" ? "left-0.5" : "left-1/2 translate-x-0.5"
+                    tab === "patient" ? "left-0.5" : "left-1/2 translate-x-0"
                   )}
                 />
                 {([
@@ -66,13 +66,13 @@ const GetStarted = () => {
                     key={t.id}
                     onClick={() => setTab(t.id)}
                     className={cn(
-                      "relative z-10 flex items-center justify-center gap-1.5 rounded-full py-2 px-4 md:px-5 text-xs md:text-sm font-semibold transition-colors duration-300 group whitespace-nowrap h-10",
+                      "relative z-10 flex-1 flex items-center justify-center gap-1.5 rounded-full py-2 px-4 md:px-5 text-xs md:text-sm font-semibold transition-colors duration-300 group h-10",
                       tab === t.id ? "text-primary-foreground" : "text-muted-foreground hover:text-white"
                     )}
                   >
                     <t.icon className="h-4 w-4 transition-transform group-hover:scale-110" />
-                    <span className="hidden sm:inline">{t.label}</span>
-                    <span className="sm:hidden text-xs">{t.label.split(" ")[0]}</span>
+                    <span className="hidden sm:inline truncate">{t.label}</span>
+                    <span className="sm:hidden text-xs truncate">{t.label.split(" ")[0]}</span>
                   </button>
                 ))}
               </div>
