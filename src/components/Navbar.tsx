@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 const links = [
   { to: "/about", label: "About Us" },
   { to: "/how-it-works", label: "How It Works" },
-  { to: "/get-started", label: "Get Started" },
 ];
 
 export function Navbar() {
@@ -42,13 +41,28 @@ export function Navbar() {
               : "bg-white/[0.02]"
           )}
         >
-          <Link to="/" className="flex items-center gap-2 pl-2">
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 pl-2 group relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-full px-2 py-1 transition-all duration-300"
+            aria-label="Go to homepage"
+            title="Back to Home"
+          >
+            {/* Glow effect on hover */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/0 via-primary/[0.15] to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg -z-10" />
+            
+            {/* Logo image */}
             <img
               src={logo}
-              alt="MyoPREVA"
-              className="h-7 md:h-8 w-auto invert brightness-0 contrast-100"
-              style={{ filter: "invert(1) brightness(2)" }}
+              alt="MyoPREVA Logo"
+              className="h-7 md:h-8 w-auto invert brightness-0 contrast-100 transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-0.5 group-hover:brightness-150"
+              style={{ 
+                filter: "invert(1) brightness(2)",
+                transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)"
+              }}
             />
+            
+            {/* Optional decorative line that appears on hover */}
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent group-hover:w-8 transition-all duration-300" />
           </Link>
 
           <ul className="hidden md:flex items-center gap-1">
@@ -82,7 +96,7 @@ export function Navbar() {
           <div className="hidden md:block">
             <Link to="/get-started">
               <PremiumButton className="px-5 py-2.5 text-xs">
-                Order Now <ArrowRight className="h-3.5 w-3.5" />
+                Get Started <ArrowRight className="h-3.5 w-3.5" />
               </PremiumButton>
             </Link>
           </div>
@@ -127,7 +141,7 @@ export function Navbar() {
             <div className="mt-4">
               <Link to="/get-started" onClick={() => setOpen(false)}>
                 <PremiumButton className="w-full">
-                  Order Now <ArrowRight className="h-4 w-4" />
+                  Get Started <ArrowRight className="h-4 w-4" />
                 </PremiumButton>
               </Link>
             </div>
