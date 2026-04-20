@@ -55,12 +55,12 @@ const GetStarted = () => {
                 <span
                   className={cn(
                     "absolute inset-y-0.5 w-1/2 rounded-full bg-gradient-primary shadow-glow transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                    tab === "patient" ? "left-0.5" : "left-[calc(50%+0.125rem)]"
+                    tab === "patient" ? "left-0.5" : "left-1/2 translate-x-0.5"
                   )}
                 />
                 {([
-                  { id: "patient", label: "I am a Patient", icon: User },
-                  { id: "practitioner", label: "I am a Practitioner", icon: Stethoscope },
+                  { id: "patient", label: "Order Details", icon: User },
+                  { id: "practitioner", label: "Doctor Registration", icon: Stethoscope },
                 ] as const).map((t) => (
                   <button
                     key={t.id}
@@ -174,7 +174,6 @@ function PatientForm() {
       <div className="space-y-2.5">
         <label className="text-xs font-semibold text-white uppercase tracking-wider opacity-70 block">
           Upload Fundus Photos
-          <span className="text-destructive ml-1">*</span>
         </label>
         <div className="relative group">
           <input
@@ -214,14 +213,12 @@ function PatientForm() {
             name="patientId"
             value={formData.patientId}
             onChange={handleInputChange}
-            required
           />
           <FormField
             label="Last Name"
             name="lastName"
             value={formData.lastName}
             onChange={handleInputChange}
-            required
           />
           <FormField
             label="Email Address"
@@ -229,7 +226,6 @@ function PatientForm() {
             type="email"
             value={formData.email}
             onChange={handleInputChange}
-            required
             className="md:col-span-2"
           />
         </div>
@@ -317,7 +313,6 @@ function PatientForm() {
               { value: "standard", label: "MyoPREVA Standard" },
               { value: "premium", label: "MyoPREVA Premium" },
             ]}
-            required
           />
           <FormField
             label="Other Combination Treatment"
@@ -552,8 +547,8 @@ function FormSelect({
         className="peer w-full rounded-lg border border-white/10 bg-white/[0.02] px-3.5 pr-10 text-sm text-white outline-none transition-all duration-300 focus:border-primary/50 focus:bg-white/[0.04] focus:shadow-[0_0_0_3px_hsl(197_100%_50%/0.1)] hover:border-white/15 appearance-none cursor-pointer h-10"
         style={{
           lineHeight: "2.5rem",
-          paddingTop: "0.25rem",
-          paddingBottom: "0.25rem",
+          paddingTop: "1.25rem",
+          paddingBottom: "0.375rem",
           verticalAlign: "middle",
         }}
       >
@@ -563,7 +558,7 @@ function FormSelect({
           </option>
         ))}
       </select>
-      <label className="pointer-events-none absolute left-3.5 top-1 text-[9px] font-semibold uppercase tracking-widest text-muted-foreground transition-all duration-300 z-10">
+      <label className="pointer-events-none absolute left-3.5 top-0.5 text-[9px] font-semibold uppercase tracking-widest text-muted-foreground transition-all duration-300 z-10 bg-background px-0.5 py-0">
         {label}
         {required && <span className="text-destructive ml-0.5">*</span>}
       </label>
