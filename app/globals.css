@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MyoPREVA — Premium dark cinematic design system. All colors HSL. */
+
+@layer base {
+  :root {
+    /* Dark cinematic theme */
+    --background: 218 39% 4%;            /* #05070B */
+    --foreground: 0 0% 100%;
+
+    --surface: 215 28% 7%;               /* #0B1017 */
+    --surface-elevated: 215 25% 10%;
+
+    --card: 215 28% 7%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 215 28% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Cyan / electric blue accent */
+    --primary: 197 100% 50%;             /* #00C2FF */
+    --primary-foreground: 218 39% 4%;
+    --primary-glow: 199 95% 60%;
+
+    --secondary: 217 91% 60%;            /* #3B82F6 */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 20% 14%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 197 100% 50%;
+    --accent-foreground: 218 39% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --input: 215 20% 11%;
+    --border: 215 20% 12%;
+    --ring: 197 100% 50%;
+
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, #00C2FF, #0095FF);
+    --gradient-secondary: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer components {
+  /* Container utilities */
+  .container-premium {
+    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass {
+    @apply bg-white/[0.02] backdrop-blur-md border border-white/10;
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl;
+  }
+
+  /* Gradient utilities */
+  .text-gradient {
+    @apply bg-gradient-to-br from-primary via-primary to-secondary/80 bg-clip-text text-transparent;
+  }
+
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 30px -8px hsl(197 100% 50% / 0.6);
+  }
+
+  .shadow-elevated {
+    @apply shadow-xl;
+  }
+
+  /* Reveal animation for intersection observer */
+  .reveal {
+    @apply opacity-0 translate-y-8 transition-all duration-700;
+  }
+
+  .reveal.in {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Glow line */
+  .glow-line {
+    @apply h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent;
+  }
+
+  /* Hero background glow */
+  .bg-hero-glow {
+    background: radial-gradient(ellipse at center, hsl(197 100% 50% / 0.1), transparent 70%);
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  @keyframes fade-in {
+    from {
+      @apply opacity-0;
+    }
+    to {
+      @apply opacity-100;
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      @apply opacity-0 translate-y-4;
+    }
+    to {
+      @apply opacity-100 translate-y-0;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      @apply opacity-40;
+    }
+    50% {
+      @apply opacity-80;
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-slower {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes beam {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes float-delayed {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.7s ease-out;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 8s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  .animate-spin-slower {
+    animation: spin-slower 30s linear infinite;
+  }
+
+  .animate-beam {
+    animation: beam 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 8s ease-in-out infinite;
+  }
+}
+
+/* Sonner toast customization */
+:root {
+  --sonner-bg: hsl(215 28% 7%);
+  --sonner-border: hsl(215 20% 12%);
+  --sonner-text: hsl(0 0% 100%);
+}
+
+/* Radix UI customization */
+[data-radix-dialog-overlay] {
+  @apply bg-black/50 backdrop-blur-sm;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(215 20% 14%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(215 15% 25%);
+}
